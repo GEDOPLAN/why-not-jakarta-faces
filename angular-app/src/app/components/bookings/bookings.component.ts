@@ -3,13 +3,13 @@ import {Observable} from 'rxjs';
 import {Booking} from '../../model/booking';
 import {BookingService} from '../../services/booking.service';
 import {Router} from '@angular/router';
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe, NgFor} from '@angular/common';
 
 @Component({
   selector: 'app-bookings',
   imports: [
     AsyncPipe,
-    NgForOf
+    NgFor
   ],
   templateUrl: './bookings.component.html',
   styleUrl: './bookings.component.css'
