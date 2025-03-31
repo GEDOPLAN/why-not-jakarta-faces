@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:form styleClass="form">
+        <div class="grid">
+            <ui:repeat value="#{trainingPresenter.trainings}"
+                       var="training">
+                <div class="cell card">
+                    <header class="card-header">
+                        <p class="card-header-title">#{training.name}</p>
+                    </header>
+                    <div class="card-content">
+                        <p:graphicImage library="images" name="#{training.logo}" style="height: 120px"/>
+                        <p>#{training.beschreibung}</p>
+                    </div>
+                    <footer class="card-footer">
+                        <p class="card-footer-item">
+                            <h:outputText value="#{training.datum}">
+                                <f:convertDateTime type="localDate" dateStyle="medium"/>
+                            </h:outputText>
+                        </p>
+                        <p class="card-footer-item">#{training.ort}</p>
+                        <p:commandButton value="buchen" action="#{dialogPresenter.viewDialog(training)}"
+                                         update="dialogForm:dialog" process="@this"
+                                         styleClass="card-footer-item button is-primary"/>
+                    </footer>
+                </div>
+            </ui:repeat>
+        </div>
+    </h:form>
+</f:view>
+</html>

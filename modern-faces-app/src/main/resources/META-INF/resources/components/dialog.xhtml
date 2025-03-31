@@ -1,0 +1,66 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+    <h:form id="dialogForm">
+        <h:panelGroup id="dialog" layout="block" styleClass="#{dialogPresenter.dialogClasses}">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">#{dialogPresenter.training.name}</p>
+                </header>
+                <section class="modal-card-body">
+                    <p>#{dialogPresenter.training.beschreibung}</p>
+                    <div class="columns mt-2 mb-0">
+                        <div class="column is-one-fifth">
+                            <b>Datum:</b>
+                        </div>
+                        <div class="column">
+                            <h:outputText value="#{dialogPresenter.training.datum}">
+                                <f:convertDateTime type="localDate" dateStyle="medium"/>
+                            </h:outputText>
+                        </div>
+                    </div>
+                    <div class="columns mb-0">
+                        <div class="column is-one-fifth">
+                            <b>Ort:</b>
+                        </div>
+                        <div class="column">
+                            <h:outputText value="#{dialogPresenter.training.ort}"/>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column is-one-fifth">
+                            <b>Trainer:</b>
+                        </div>
+                        <div class="column">
+                            <h:outputText value="#{dialogPresenter.training.trainer}"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Teilnehmer:</label>
+                        <div class="control">
+                            <p:inputText value="#{dialogPresenter.name}" styleClass="input"/>
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot is-justify-content-center">
+                    <div class="buttons">
+                        <p:commandButton value="buchen" action="#{dialogPresenter.book()}" update="dialog"
+                                         class="button is-success"/>
+                        <p:commandButton value="abbrechen" action="#{dialogPresenter.hideDialog()}" update="dialog"
+                                         class="button"/>
+                    </div>
+                </footer>
+            </div>
+        </h:panelGroup>
+    </h:form>
+</f:view>
+
+</html>

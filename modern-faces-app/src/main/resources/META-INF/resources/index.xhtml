@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:gedo="jakarta.faces.composite/gedo"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Modern Faces App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"/>
+</h:head>
+
+<h:body>
+    <ui:include src="components/title-bar.xhtml">
+        <ui:param name="title" value="Jakarta EE Schulungen"></ui:param>
+    </ui:include>
+    <div class="container">
+        <ui:include src="components/trainings.xhtml"/>
+        <h:form styleClass="mt-4">
+            <p:commandButton value="Buchungen" action="bookings.xhtml?faces-redirect=true" styleClass="button is-link"/>
+        </h:form>
+    </div>
+    <ui:include src="components/dialog.xhtml"/>
+</h:body>
+
+</html>
