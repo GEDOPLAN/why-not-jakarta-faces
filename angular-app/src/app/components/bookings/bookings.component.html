@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Kurs</th>
+    <th>Teilnehmer</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let booking of bookings$ | async">
+    <td>{{ booking.training.beschreibung }}</td>
+    <td>{{ booking.name }}</td>
+  </tr>
+  </tbody>
+</table>
+<form class="mt-4">
+  <button (click)="showHomepage()" type="button" class="button is-link">Startseite</button>
+</form>

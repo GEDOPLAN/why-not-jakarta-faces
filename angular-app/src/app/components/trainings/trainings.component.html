@@ -1,0 +1,24 @@
+<form class="form">
+  <div class="grid">
+  <span *ngFor="let training of trainings$ | async">
+    <div class="cell card">
+      <header class="card-header">
+        <p class="card-header-title">{{ training.name }}</p>
+      </header>
+      <div class="card-content">
+        <img [src]="'assets/images/' + training.logo" style="height: 120px">
+        <p>{{ training.beschreibung }}</p>
+      </div>
+      <footer class="card-footer">
+        <p class="card-footer-item">
+          {{ training.datum }}
+        </p>
+        <p class="card-footer-item">{{ training.ort }}</p>
+        <button (click)="bookTraining(training)" type="button" class="card-footer-item button is-primary">
+          buchen
+        </button>
+      </footer>
+    </div>
+  </span>
+  </div>
+</form>

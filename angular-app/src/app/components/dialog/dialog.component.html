@@ -1,0 +1,51 @@
+<div id="dialog" [class]="dialogClasses">
+  <div class="modal-background"></div>
+  <div class="modal-card" *ngIf="training$ | async as training">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{{ training.name }}</p>
+    </header>
+    <section class="modal-card-body">
+      <p>{{ training.beschreibung }}</p>
+      <div class="columns mt-2 mb-0">
+        <div class="column is-one-fifth">
+          <b>Datum:</b>
+        </div>
+        <div class="column">
+          {{ training.datum }}
+        </div>
+      </div>
+      <div class="columns mb-0">
+        <div class="column is-one-fifth">
+          <b>Ort:</b>
+        </div>
+        <div class="column">
+          {{ training.ort }}
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-one-fifth">
+          <b>Trainer:</b>
+        </div>
+        <div class="column">
+          {{ training.trainer }}
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Teilnehmer:</label>
+        <div class="control">
+          <input type="text" class="input" [(ngModel)]="participant"/>
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot is-justify-content-center">
+      <div class="buttons">
+        <button (click)="buchen()" class="button is-success">
+          buchen
+        </button>
+        <button (click)="hideDialog()" type="button" class="button">
+          abbrechen
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<app-title-bar/>
+<div class="container" *ngIf="viewTrainings">
+  <app-trainings (selection)="onSelection($event)"/>
+  <form class="mt-4">
+    <button (click)="showBookings()" type="button" class="button is-link">Buchungen</button>
+  </form>
+</div>
+<app-dialog [trainingId]="selection"/>
+<div class="container">
+  <router-outlet/>
+</div>
