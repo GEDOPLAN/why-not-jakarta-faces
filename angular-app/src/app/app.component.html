@@ -1,11 +1,7 @@
 <app-title-bar/>
-<div class="container" *ngIf="viewTrainings">
-  <app-trainings (selection)="onSelection($event)"/>
-  <form class="mt-4">
-    <button (click)="showBookings()" type="button" class="button is-link">Buchungen</button>
-  </form>
-</div>
-<app-dialog [trainingId]="selection"/>
 <div class="container">
+  <!--    hier das main routing, hübsch machen kannst du selber ;) -->
+  <a routerLink="bookings">Bookings</a>
+  <a routerLink="trainings">Trainings</a>
   <router-outlet/>
 </div>

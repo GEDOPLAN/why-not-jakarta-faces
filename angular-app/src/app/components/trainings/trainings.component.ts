@@ -4,11 +4,12 @@ import {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {Training} from '../../model/training';
 import {TrainingService} from '../../services/training.service';
+import {DialogComponent} from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-trainings',
   imports: [
-    AsyncPipe, NgFor
+    AsyncPipe, NgFor, DialogComponent
   ],
   templateUrl: './trainings.component.html',
   styleUrl: './trainings.component.css'
