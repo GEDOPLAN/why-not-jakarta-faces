@@ -1,11 +1,11 @@
-import {Component, Input, input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component} from '@angular/core';
 import {Training} from '../../model/training';
 import {TrainingService} from '../../services/training.service';
 import {Observable, of} from 'rxjs';
 import {AsyncPipe, NgIf} from '@angular/common';
 import {BookingService} from '../../services/booking.service';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-dialog',
@@ -21,7 +21,7 @@ export class DialogComponent {
   training$: Observable<Training | null> = of(null);
   participant?: string;
 
-  constructor(private trainingService: TrainingService, private bookingService: BookingService, route: ActivatedRoute) {
+  constructor(private trainingService: TrainingService, private bookingService: BookingService, private router: Router, route: ActivatedRoute) {
     route.paramMap.subscribe(params => {
       this.trainingId = params.get("id") || undefined;
       if (this.trainingId) {
@@ -36,12 +36,11 @@ export class DialogComponent {
   }
 
   hideDialog() {
-    this.visible = false;
+    this.router.navigate(["trainings"]);
   }
 
   buchen() {
     console.log(this.participant);
-    this.bookingService.book(this.trainingId!, this.participant!);
-    this.hideDialog();
+    this.bookingService.book(this.trainingId!, this.participant!).subscribe(() => this.hideDialog());
   }
 }
