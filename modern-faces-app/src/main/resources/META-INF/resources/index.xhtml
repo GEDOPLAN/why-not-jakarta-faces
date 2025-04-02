@@ -14,19 +14,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Modern Faces App</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 </h:head>
 
 <h:body>
+    <p:importEnum type="de.gedoplan.showcase.ui.View" var="View"/>
     <ui:include src="components/title-bar.xhtml">
-        <ui:param name="title" value="Jakarta EE Schulungen"></ui:param>
+        <ui:param name="title" value="#{mainPresenter.title}"/>
     </ui:include>
     <div class="container">
-        <ui:include src="components/trainings.xhtml"/>
-        <h:form styleClass="mt-4">
-            <p:commandButton value="Buchungen" action="bookings.xhtml?faces-redirect=true" styleClass="button is-link"/>
+        <h:form styleClass="mt-4 mb-4">
+            <p:commandButton value="Trainings" action="#{mainPresenter.setView(View.TRAININGS)}"
+                             process="@form" update="title content" styleClass="button"/>
+            <p:commandButton value="Buchungen" action="#{mainPresenter.setView(View.BOOKINGS)}"
+                             process="@form" update="title content" styleClass="button"/>
         </h:form>
-    </div>
-    <ui:include src="components/dialog.xhtml"/>
-</h:body>
 
+        <h:panelGroup id="content">
+            <ui:include src="components/trainings.xhtml"/>
+            <ui:include src="components/bookings.xhtml"/>
+        </h:panelGroup>
+    </div>
+</h:body>
 </html>
