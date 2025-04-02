@@ -6,6 +6,12 @@
   </tr>
   </thead>
   <tbody>
+<!--    @for (booking of bookings$ | async; track booking) {-->
+<!--      <tr>-->
+<!--        <td>{{ booking.training.beschreibung }}</td>-->
+<!--        <td>{{ booking.name }}</td>-->
+<!--      </tr>-->
+<!--    }-->
   <tr *ngFor="let booking of bookings$ | async">
     <td>{{ booking.training.beschreibung }}</td>
     <td>{{ booking.name }}</td>

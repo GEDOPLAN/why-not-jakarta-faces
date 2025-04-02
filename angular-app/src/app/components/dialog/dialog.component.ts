@@ -31,6 +31,11 @@ export class DialogComponent {
     })
   }
 
+  convertDate(inputDate: string): string {
+    const [year, month, day] = inputDate.split('-');
+    return `${day}.${month}.${year}`;
+  }
+
   viewDialog() {
     this.visible = true;
   }
