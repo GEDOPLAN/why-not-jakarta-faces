@@ -4,25 +4,28 @@ import {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {Training} from '../../model/training';
 import {TrainingService} from '../../services/training.service';
+import {DialogComponent} from "../dialog/dialog.component";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-trainings',
-  imports: [
-    AsyncPipe, NgFor
-  ],
-  templateUrl: './trainings.component.html',
-  styleUrl: './trainings.component.css'
+    selector: 'app-trainings',
+    imports: [
+        AsyncPipe, NgFor, DialogComponent
+    ],
+    templateUrl: './trainings.component.html',
+    styleUrl: './trainings.component.css'
 })
 export class TrainingsComponent {
-  @Output() selection = new EventEmitter<string>();
+    @Output() selection = new EventEmitter<string>();
 
-  trainings$: Observable<Training[]>;
+    trainings$: Observable<Training[]>;
 
-  constructor(trainingService: TrainingService) {
-    this.trainings$ = trainingService.loadAllTrainings();
-  }
+    constructor(trainingService: TrainingService, private router: Router) {
+        this.trainings$ = trainingService.loadAllTrainings();
+    }
 
-  bookTraining(training: Training) {
-    this.selection.emit(training.id);
-  }
+    bookTraining(training: Training) {
+        this.router.navigate(['trainings', training.id]);
+        this.selection.emit(training.id);
+    }
 }

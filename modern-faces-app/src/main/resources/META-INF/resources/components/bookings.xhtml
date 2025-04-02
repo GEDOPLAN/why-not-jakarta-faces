@@ -5,20 +5,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="jakarta.faces.html"
-      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Buchungen</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"/>
-</h:head>
-
-<h:body>
-    <ui:include src="components/title-bar.xhtml">
-        <ui:param name="title" value="Kurs Buchungen"></ui:param>
-    </ui:include>
-    <div class="container">
+<f:view>
+    <h:panelGroup rendered="#{mainPresenter.view.equals(View.BOOKINGS)}">
+        <p:importEnum type="de.gedoplan.showcase.ui.View" var="View"/>
         <p:dataTable value="#{bookingPresenter.bookings}" var="booking" tableStyleClass="table">
             <p:column headerText="Kurs">
                 <h:outputText value="#{booking.training.name}"/>
@@ -27,10 +19,7 @@
                 <h:outputText value="#{booking.name}"/>
             </p:column>
         </p:dataTable>
-        <h:form styleClass="mt-4">
-            <p:commandButton value="Startseite" action="index.xthml?faces-redirect=true" styleClass="button is-link"/>
-        </h:form>
-    </div>
-</h:body>
+    </h:panelGroup>
+</f:view>
 
 </html>
