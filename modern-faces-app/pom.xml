@@ -15,8 +15,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
 		<quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-		<quarkus.platform.version>3.15.3.1</quarkus.platform.version>
-		<primefaces.extension.version>3.15.0</primefaces.extension.version>
+		<quarkus.platform.version>3.20.2.2</quarkus.platform.version>
+		<primefaces.extension.version>3.15.7</primefaces.extension.version>
 		<primeflex.version>3.3.1</primeflex.version>
 		<lombok.version>1.18.32</lombok.version>
 		<skipITs>true</skipITs>
